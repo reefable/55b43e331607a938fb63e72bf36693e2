@@ -1,0 +1,14 @@
+<html><head></head><body><script>
+addEventListener('fetch', event => {
+  event.respondWith(fetchAndApply(event.request))
+})
+
+async function fetchAndApply(request) {
+
+    const ip = '{"ip":"' + request.headers.get('cf-connecting-ip') + '","country":"' + request.headers.get('cf-ipcountry') + '"}'
+    return new Response(ip)
+
+}
+</script>
+</body>
+</html>
